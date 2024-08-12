@@ -45,5 +45,12 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>SkySense need your location permission to locate you in real time</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>SkySense need your location permission to locate you in real time</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>SkySense need your location permission to locate you in real time</string>
 </dict>
 </plist>
