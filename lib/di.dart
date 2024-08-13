@@ -3,6 +3,7 @@ import 'package:skysense/src/data/datasources/weather_remote_datasource.dart';
 import 'package:skysense/src/data/repositories/weather_repository_impl.dart';
 import 'package:skysense/src/domain/repositories/weather_repository.dart';
 import 'package:skysense/src/domain/usecases/get_weather_info.dart';
+import 'package:skysense/src/domain/usecases/search_place.dart';
 import 'package:skysense/src/presentation/bloc/weather_bloc.dart';
 
 final serviceLocator = GetIt.instance;
@@ -25,11 +26,17 @@ Future<void> initDependencies() async {
         serviceLocator(),
       ),
     )
+    ..registerFactory(
+          () => SearchPlace(
+        serviceLocator(),
+      ),
+    )
 
   // Bloc
     ..registerLazySingleton(
           () => WeatherBloc(
         getWeatherInfo: serviceLocator(),
+        searchPlace: serviceLocator(),
       ),
     );
 }

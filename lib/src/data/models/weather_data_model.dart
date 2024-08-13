@@ -65,6 +65,7 @@ class Current extends CurrentEntity{
     super.chanceOfRain,
     super.willItSnow,
     super.chanceOfSnow,
+    required super.airQuality,
   });
 
   factory Current.fromJson(Map<String, dynamic> json) => Current(
@@ -104,6 +105,7 @@ class Current extends CurrentEntity{
     chanceOfRain: json["chance_of_rain"],
     willItSnow: json["will_it_snow"],
     chanceOfSnow: json["chance_of_snow"],
+    airQuality: AirQuality.fromJson(json["air_quality"]),
   );
 
 }
@@ -269,4 +271,32 @@ class EnumValues<T> {
     reverseMap = map.map((k, v) => MapEntry(v, k));
     return reverseMap;
   }
+}
+
+class AirQuality extends AirQualityEntity {
+
+  AirQuality({
+    super.co,
+    super.no2,
+    super.o3,
+    super.so2,
+    super.pm25,
+    super.pm10,
+    super.usEpaIndex,
+    super.gbDefraIndex,
+    super.aqiData,
+  });
+
+  factory AirQuality.fromJson(Map<String, dynamic> json) => AirQuality(
+    co: json["co"]?.toDouble(),
+    no2: json["no2"]?.toDouble(),
+    o3: json["o3"]?.toDouble(),
+    so2: json["so2"]?.toDouble(),
+    pm25: json["pm2_5"]?.toDouble(),
+    pm10: json["pm10"]?.toDouble(),
+    usEpaIndex: json["us-epa-index"],
+    gbDefraIndex: json["gb-defra-index"],
+    aqiData: json["aqi_data"],
+  );
+
 }

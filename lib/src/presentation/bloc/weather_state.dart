@@ -23,11 +23,18 @@ final class WeatherFailure extends WeatherState {
   List<Object?> get props => [error];
 }
 
-
 final class WeathersDisplaySuccess extends WeatherState {
   final WeatherDataModel? weatherData;
   const WeathersDisplaySuccess(this.weatherData);
 
   @override
   List<Object?> get props => [weatherData];
+}
+
+final class SearchPlaceSuccess extends WeatherState {
+  final List<SearchPlaceModel> data;
+  const SearchPlaceSuccess(this.data);
+
+  @override
+  List<Object?> get props => [data];
 }

@@ -54,6 +54,7 @@ class CurrentEntity {
   int? chanceOfRain;
   int? willItSnow;
   int? chanceOfSnow;
+  AirQualityEntity airQuality;
 
   CurrentEntity({
     this.lastUpdatedEpoch,
@@ -92,6 +93,7 @@ class CurrentEntity {
     this.chanceOfRain,
     this.willItSnow,
     this.chanceOfSnow,
+    required this.airQuality,
   });
 
   Map<String, dynamic> toJson() => {
@@ -333,5 +335,41 @@ class LocationEntity {
     "tz_id": tzId,
     "localtime_epoch": localtimeEpoch,
     "localtime": localtime,
+  };
+}
+
+class AirQualityEntity {
+  double? co;
+  double? no2;
+  double? o3;
+  double? so2;
+  double? pm25;
+  double? pm10;
+  int? usEpaIndex;
+  int? gbDefraIndex;
+  String? aqiData;
+
+  AirQualityEntity({
+    this.co,
+    this.no2,
+    this.o3,
+    this.so2,
+    this.pm25,
+    this.pm10,
+    this.usEpaIndex,
+    this.gbDefraIndex,
+    this.aqiData,
+  });
+
+  Map<String, dynamic> toJson() => {
+    "co": co,
+    "no2": no2,
+    "o3": o3,
+    "so2": so2,
+    "pm2_5": pm25,
+    "pm10": pm10,
+    "us-epa-index": usEpaIndex,
+    "gb-defra-index": gbDefraIndex,
+    "aqi_data": aqiData,
   };
 }
