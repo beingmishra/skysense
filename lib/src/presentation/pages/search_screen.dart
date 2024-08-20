@@ -1,8 +1,8 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'package:skysense/core/utils/helpers.dart';
 import 'package:skysense/src/data/models/search_place_model.dart';
 import 'package:skysense/src/presentation/bloc/weather_bloc.dart';
 
@@ -95,31 +95,37 @@ class _SearchScreenState extends State<SearchScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Search",
-                style: GoogleFonts.nunito(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.grey.shade400),
+              FadeInUp(
+                delay: const Duration(milliseconds: 300),
+                child: Text(
+                  "Search",
+                  style: GoogleFonts.nunito(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey.shade400),
+                ),
               ),
               12.height,
-              Container(
-                decoration: boxDecorationRoundedWithShadow(1000),
-                child: TextFormField(
-                  onChanged: (val) {
-                    _debouncer.run(() {
-                      if(val.isNotEmpty) {
-                        BlocProvider.of<WeatherBloc>(context)
-                            .add(SearchPlaceEvent(query: val));
-                      }else{
+              FadeInUp(
+                delay: const Duration(milliseconds: 400),
+                child: Container(
+                  decoration: boxDecorationRoundedWithShadow(1000),
+                  child: TextFormField(
+                    onChanged: (val) {
+                      _debouncer.run(() {
+                        if(val.isNotEmpty) {
+                          BlocProvider.of<WeatherBloc>(context)
+                              .add(SearchPlaceEvent(query: val));
+                        }else{
 
-                      }
-                    });
-                  },
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    focusColor: Colors.grey.shade400,
-                    prefixIcon: const Icon(Icons.search),
+                        }
+                      });
+                    },
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      focusColor: Colors.grey.shade400,
+                      prefixIcon: const Icon(Icons.search),
+                    ),
                   ),
                 ),
               ),

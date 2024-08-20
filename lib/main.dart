@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:skysense/di.dart';
 import 'package:skysense/src/presentation/bloc/weather_bloc.dart';
 import 'package:skysense/src/presentation/pages/home_screen.dart';
@@ -9,6 +10,7 @@ Position? currentLocation;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
   await initDependencies();
   LocationPermission permissionStatus = await Geolocator.checkPermission();
   if (permissionStatus != LocationPermission.always || permissionStatus != LocationPermission.whileInUse) {

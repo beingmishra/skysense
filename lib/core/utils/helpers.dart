@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 String getBgImage(int condition, int isDay) {
@@ -68,4 +69,16 @@ bool isDaytime(String sunrise, String sunset) {
       .copyWith(hour: parsedSunsetTime.hour, minute: parsedSunsetTime.minute);
 
   return now.isAfter(sunriseTime) && now.isBefore(sunsetTime);
+}
+
+Route createRoute(Widget page) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => page,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return FadeTransition(
+        opacity: animation,
+        child: child,
+      );
+    },
+  );
 }

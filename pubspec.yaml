@@ -21,6 +21,8 @@ dependencies:
   fpdart: ^1.1.0
   http: ^1.2.2
   get_it: ^7.7.0
+  animate_do: ^3.3.4
+  get_storage: ^2.1.1
 
 dev_dependencies:
   flutter_test:
